@@ -1,0 +1,38 @@
+
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Dish</title>
+      <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+      <div class='container'>
+        <div class='header'>
+          <img width="100" src="https://cdn2.iconfinder.com/data/icons/food-restaurant-1/128/flat-11-512.png" alt="">
+          <h1>Filipino Dish</h1>
+          <h4>Sarap Pinas</h4>
+        </div>
+        <h2>Add Dish</h2>
+        <form id='reviewForm'>
+          <h4>Name</h4>
+          <input type="hidden" id='hiddenId' />
+          <input type="text" id='fullName' />
+          <br/>
+          <h4>Description</h4>
+          <textarea id='message'></textarea>
+          <br/>
+          <h4>Cost</h4>
+          <input type="text" id='cost' />
+          <br/>
+          <button type='submit'>Save!</button>
+        </form>
+        <br/>
+        <h2>Dish List</h2>
+        <ul id='dish'></ul>
+      </div>
+      <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+      <script src="main.js"></script>
+      <link href="//fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    </body>
+</html>
