@@ -11,25 +11,26 @@ var db = firebase.database();
 // CREATE REWIEW
 
 var reviewForm = document.getElementById('reviewForm');
-var fullName   = document.getElementById('fullName');
-var message    = document.getElementById('message');
+var dishname   = document.getElementById('dishname');
+var description    = document.getElementById('description');
+var cost    = document.getElementById('cost');
 var hiddenId   = document.getElementById('hiddenId');
 
 reviewForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  if (!fullName.value || !message.value) return null
+  if (!dishname.value || !description.value || !cost.value) return null
 
   var id = hiddenId.value || Date.now()
 
   db.ref('dish/' + id).set({
-    name: fullName.value,
-    Description: message.value,
+    name: dishname.value,
+    Description: description.value,
     cost:cost.value
   });
   cost.value = '';
-  fullName.value = '';
-  message.value  = '';
+  dishname.value = '';
+  description.value  = '';
   hiddenId.value = '';
 });
 
@@ -44,7 +45,7 @@ reviewsRef.on('child_added', (data) => {
   li.innerHTML = reviewTemplate(data.val());
   dish.appendChild(li);
 
-  console.log(data.val());
+ 
 });
 
 reviewsRef.on('child_changed', (data) => {
@@ -62,9 +63,12 @@ dish.addEventListener('click', (e) => {
 
   // UPDATE REVEIW
   if (e.target.classList.contains('edit')) {
-    fullName.value = reviewNode.querySelector('.name').innerText;
-    message.value  = reviewNode.querySelector('.Description').innerText;
+    
+    description.value  = reviewNode.querySelector('.description').innerText;
+    cost.value  = reviewNode.querySelector('.cost').innerText;
+    dishname.value = reviewNode.querySelector('.name').innerText;
     hiddenId.value = reviewNode.id;
+    console.log(reviewNode);
   }
 
   // DELETE REVEIW
@@ -76,10 +80,10 @@ dish.addEventListener('click', (e) => {
 
 function reviewTemplate({name, Description,cost}) {
   return `
-    <div class='fullName'>Name::${name}</div>
-    <div class='message'>Desc.::${Description}</div>
-    <div class='message'>Cost::${cost}</div>
-    <button class='delete'>Delete</button>
-    <button class='edit'>Edit</button>
+  <b>Name::</b><div class='name'>${name}</div>
+  <b>Desc.::</b> <div class='description'>${Description}</div>
+  <b>Cost::</b><div class='cost'>${cost}</div>
+    <button class='delete btn btn-danger'>Delete</button>
+    <button class='edit btn btn-info'>Edit</button>
   `
 };

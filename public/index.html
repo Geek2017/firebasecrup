@@ -5,11 +5,13 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Dish</title>
       <link rel="stylesheet" href="main.css">
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
       <div class='container'>
         <div class='header'>
           <img width="100" src="https://cdn2.iconfinder.com/data/icons/food-restaurant-1/128/flat-11-512.png" alt="">
+          
           <h1>Filipino Dish</h1>
           <h4>Sarap Pinas</h4>
         </div>
@@ -17,15 +19,15 @@
         <form id='reviewForm'>
           <h4>Name</h4>
           <input type="hidden" id='hiddenId' />
-          <input type="text" id='fullName' />
+          <input type="text" id='dishname' />
           <br/>
           <h4>Description</h4>
-          <textarea id='message'></textarea>
+          <textarea id='description'></textarea>
           <br/>
           <h4>Cost</h4>
-          <input type="text" id='cost' />
+          <input type="text" id='cost'/>
           <br/>
-          <button type='submit'>Save!</button>
+          <button  class="btn btn-success float-right" type='submit'>Save!</button>
         </form>
         <br/>
         <h2>Dish List</h2>
